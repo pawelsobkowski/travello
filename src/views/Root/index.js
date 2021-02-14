@@ -7,9 +7,10 @@ import Search from '../Search';
 import Signin from '../Signin';
 import Signup from '../Signup';
 import Header from '../../templates/Header';
+import MainTemplate from '../../templates/Main';
 
 const Root = () => (
-  <>
+  <MainTemplate>
     <Switch>
       <Route exact path="/profile">
         <Profile />
@@ -45,6 +46,6 @@ const Root = () => (
     <Route path={['/details/:id/signup', '/dashboard/signup', '/home/signup']}>
       <Signup />
     </Route>
-  </>
+  </MainTemplate>
 );
 export default Root;
