@@ -6,21 +6,28 @@ import Details from '../Details';
 import Search from '../Search';
 import Signin from '../Signin';
 import Signup from '../Signup';
+import Header from '../../templates/Header';
 
 const Root = () => (
   <>
     <Switch>
-      <Route exact path={['/', '/home']}>
-        <Home />
-      </Route>
-      <Route path="/dashboard">
-        <Dashboard />
-      </Route>
-      <Route path="/details/:placeId">
-        <Details />
-      </Route>
-      <Route path="/profile">
+      <Route exact path="/profile">
         <Profile />
+      </Route>
+      <Route exact path={['/', '/home']}>
+        <Header>
+          <Home />
+        </Header>
+      </Route>
+      <Route exact path="/dashboard">
+        <Header>
+          <Dashboard />
+        </Header>
+      </Route>
+      <Route exact path="/details/:placeId">
+        <Header>
+          <Details />
+        </Header>
       </Route>
       <Route path="*">
         <Redirect to="/home" />
