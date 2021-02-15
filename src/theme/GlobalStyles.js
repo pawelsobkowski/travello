@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
 
     button, input {
         font-family: 'Poppins', sans-serif;
+        padding: 0;
     }
 
     body {
