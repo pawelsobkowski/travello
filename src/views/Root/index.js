@@ -15,17 +15,17 @@ const Root = () => (
       <Route exact path="/profile">
         <Profile />
       </Route>
-      <Route exact path={['/', '/home']}>
+      <Route path={['/', '/home']}>
         <Header>
           <Home />
         </Header>
       </Route>
-      <Route exact path="/dashboard">
+      <Route path="/dashboard">
         <Header>
           <Dashboard />
         </Header>
       </Route>
-      <Route exact path="/details/:placeId">
+      <Route path="/details/:placeId">
         <Header>
           <Details />
         </Header>
