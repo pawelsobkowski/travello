@@ -29,6 +29,10 @@ const ButtonsWrapper = styled.div`
   grid-gap: 10px;
 `;
 
+const ButtonWrapper = styled.div`
+  ${({ side }) => (side === 'left' ? 'justify-self: left' : 'justify-self: right')}
+`;
+
 const SignInButton = styled(Link)`
   height: 40px;
   width: 100px;
@@ -41,16 +45,16 @@ const SignInButton = styled(Link)`
   background-color: ${({ theme }) => hexToRgba(theme.colors.grey, '0.9')};
   color: ${({ theme }) => theme.colors.white};
 
-  /* & > a {
-    width: 100%;
-    height: 100%;
-    } */
+  &:focus {
+    border: ${({ theme }) => theme.colors.black};
+  }
 `;
 
 const Styled = {
   Header,
   ButtonsWrapper,
   SignInButton,
+  ButtonWrapper,
 };
 
 export default Styled;
