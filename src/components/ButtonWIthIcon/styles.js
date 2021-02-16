@@ -2,27 +2,24 @@ import styled, { css } from 'styled-components';
 import hexToRgba from 'hex-to-rgba';
 
 const Button = styled.button`
-  width: 150px;
-  height: 40px;
+  width: 100%;
+  height: 100%;
   border: 0;
   border-radius: 5px;
   cursor: pointer;
   background-color: ${({ theme }) => theme.colors.primary_blue};
   color: ${({ theme }) => theme.colors.white};
-  font-size: 14px;
+  font-size: 1.5rem;
   font-weight: bold;
+  padding-left: 0.5rem;
 
   @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    width: 240px;
-    height: 50px;
-    font-size: 24px;
-    border-radius: 10px;
+    font-size: 2.2rem;
+    padding-left: 1rem;
   }
 
   @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
-    width: 270px;
-    height: 60px;
-    font-size: 30px;
+    font-size: 2.7rem;
   }
 
   ${({ isPrimary, theme }) =>
@@ -34,41 +31,30 @@ const Button = styled.button`
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 70% 30%;
+  height: 100%;
+  grid-template-columns: 75% 25%;
   align-items: center;
 `;
 
 const Text = styled.span`
   justify-self: start;
-  padding-left: 10px;
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    padding-left: 15px;
-  }
 `;
 
 const Svg = styled.div`
-  display: flex;
-  justify-content: center;
+  position: relative;
+  height: 100%;
 
   & > svg {
-    width: 22px;
-    height: 22px;
-
-    @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-      width: 32px;
-      height: 32px;
-    }
-
-    @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
-      width: 37px;
-      height: 37px;
-    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    transform: translate(-50%, -50%);
   }
 
   & > svg > * {
     stroke: ${({ theme }) => theme.colors.white};
-    stroke-width: 1px;
   }
 `;
 
