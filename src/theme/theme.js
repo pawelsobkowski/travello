@@ -11,7 +11,7 @@ const theme = {
     text_blue: '#0E84BF',
     profile_blue: '#003B59',
   },
-  bp: {
+  breakingPoints: {
     mobile: '640px',
     tablet: '768px',
     laptop: '1024px',

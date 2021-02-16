@@ -12,14 +12,14 @@ const Button = styled.button`
   font-size: 14px;
   font-weight: bold;
 
-  @media (min-width: ${({ theme }) => theme.bp.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
     width: 240px;
     height: 50px;
     font-size: 24px;
     border-radius: 10px;
   }
 
-  @media (min-width: ${({ theme }) => theme.bp.laptop}) {
+  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
     width: 270px;
     height: 60px;
     font-size: 30px;
@@ -42,7 +42,7 @@ const Text = styled.span`
   justify-self: start;
   padding-left: 10px;
 
-  @media (min-width: ${({ theme }) => theme.bp.tablet}) {
+  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
     padding-left: 15px;
   }
 `;
@@ -55,12 +55,12 @@ const Svg = styled.div`
     width: 22px;
     height: 22px;
 
-    @media (min-width: ${({ theme }) => theme.bp.tablet}) {
+    @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
       width: 32px;
       height: 32px;
     }
 
-    @media (min-width: ${({ theme }) => theme.bp.laptop}) {
+    @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
       width: 37px;
       height: 37px;
     }
