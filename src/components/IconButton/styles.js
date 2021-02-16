@@ -23,11 +23,6 @@ const Button = styled.button`
     stroke: ${({ theme }) => theme.colors.white};
     fill: none;
   }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    width: 50px;
-    height: 50px;
-  }
 `;
 
 const AvatarBox = styled.div`
