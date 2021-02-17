@@ -15,17 +15,17 @@ const Root = () => (
       <Route exact path="/profile">
         <Profile />
       </Route>
-      <Route exact path={['/', '/home']}>
+      <Route path={['/', '/home']}>
         <Header>
           <Home />
         </Header>
       </Route>
-      <Route exact path="/dashboard">
+      <Route path="/dashboard">
         <Header>
           <Dashboard />
         </Header>
       </Route>
-      <Route exact path="/details/:placeId">
+      <Route path="/details/:placeId">
         <Header>
           <Details />
         </Header>
@@ -35,15 +35,15 @@ const Root = () => (
       </Route>
     </Switch>
 
-    <Route path={['/details/:id/search', '/dashboard/search', '/home/search']}>
+    <Route path={['/details/:placeId/search', '/dashboard/search', '/home/search']}>
       <Search />
     </Route>
 
-    <Route path={['/details/:id/signin', '/dashboard/signin', '/home/signin']}>
+    <Route path={['/details/:placeId/signin', '/dashboard/signin', '/home/signin']}>
       <Signin />
     </Route>
 
-    <Route path={['/details/:id/signup', '/dashboard/signup', '/home/signup']}>
+    <Route path={['/details/:placeId/signup', '/dashboard/signup', '/home/signup']}>
       <Signup />
     </Route>
   </MainTemplate>
