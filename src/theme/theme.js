@@ -1,3 +1,5 @@
+import hexToRgb from 'hex-to-rgba';
+
 const theme = {
   colors: {
     white: '#FFFFFF',
@@ -10,6 +12,8 @@ const theme = {
     lightblue: '#BCE9FF',
     text_blue: '#0E84BF',
     profile_blue: '#003B59',
+    black_087: hexToRgb('#000', 0.87),
+    black_063: hexToRgb('#000', 0.63),
   },
   breakingPoints: {
     mobile: '640px',
