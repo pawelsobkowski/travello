@@ -1,3 +1,9 @@
-const Dashboard = () => <h1>Dashboard</h1>;
+import Styled from './style';
+
+const Dashboard = () => (
+  <Styled.Section>
+    <Styled.Title>Dashboard</Styled.Title>
+  </Styled.Section>
+);
 
 export default Dashboard;
