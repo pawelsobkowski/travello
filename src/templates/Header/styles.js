@@ -11,7 +11,7 @@ const Header = styled.header`
   width: 100%;
   height: 60px;
   padding: 0 2rem;
-  z-index: 10000;
+  z-index: 2;
   align-items: center;
 
   @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
