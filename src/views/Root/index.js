@@ -15,7 +15,7 @@ const Root = () => (
       <Route exact path="/profile">
         <Profile />
       </Route>
-      <Route path={['/', '/home']}>
+      <Route exact path={['/', '/home']}>
         <Header>
           <Home />
         </Header>
