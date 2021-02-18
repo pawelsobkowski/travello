@@ -1,9 +1,9 @@
 import Styled from './style';
 
 const Dashboard = () => (
-  <Styled.Section>
+  <Styled.Container>
     <Styled.Title>Dashboard</Styled.Title>
-  </Styled.Section>
+  </Styled.Container>
 );
 
 export default Dashboard;
