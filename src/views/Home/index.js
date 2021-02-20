@@ -8,6 +8,7 @@ import { ReactComponent as ArrowRight } from '../../assets/icon/arrow_right.svg'
 import { ReactComponent as Compass } from '../../assets/icon/compass.svg';
 import { ReactComponent as ChevronRight } from '../../assets/icon/chevron_right.svg';
 import { ReactComponent as ChevronLeft } from '../../assets/icon/chevron_left.svg';
+import Variants from '../../variants/home';
 
 const Home = () => {
   const [sliderStatus, setSliderStatus] = useState({
@@ -18,28 +19,6 @@ const Home = () => {
 
   const [titleElement, titleDimensions] = useDimensions();
   const [descElement, descDimensions] = useDimensions();
-
-  const currentPlaceText = (height) => ({
-    visible: {
-      y: height * -1,
-      transition: {
-        ease: 'easeInOut',
-        duration: 0.5,
-      },
-    },
-    hidden: { y: sliderStatus.direction === -1 ? 0 : height * -2 },
-  });
-
-  const previousPlaceText = (height) => ({
-    visible: {
-      y: sliderStatus.direction === -1 ? height * 2 * sliderStatus.direction : 0,
-      transition: {
-        ease: 'easeInOut',
-        duration: 0.5,
-      },
-    },
-    hidden: { y: height * -1 },
-  });
 
   const [data] = useState([
     {
@@ -92,7 +71,10 @@ const Home = () => {
                     <>
                       {sliderStatus.previousPlace === i && (
                         <Styled.Title
-                          variants={previousPlaceText(titleDimensions.height)}
+                          variants={Variants.previousPlaceText(
+                            titleDimensions.height,
+                            sliderStatus.direction
+                          )}
                           animate="visible"
                           initial="hidden"
                         >
@@ -101,7 +83,10 @@ const Home = () => {
                       )}
                       {sliderStatus.currentPlace === i && (
                         <Styled.Title
-                          variants={currentPlaceText(titleDimensions.height)}
+                          variants={Variants.currentPlaceText(
+                            titleDimensions.height,
+                            sliderStatus.direction
+                          )}
                           animate="visible"
                           initial="hidden"
                         >
@@ -121,7 +106,10 @@ const Home = () => {
                     <>
                       {sliderStatus.previousPlace === i && (
                         <Styled.Description
-                          variants={previousPlaceText(descDimensions.height)}
+                          variants={Variants.previousPlaceText(
+                            descDimensions.height,
+                            sliderStatus.direction
+                          )}
                           animate="visible"
                           initial="hidden"
                         >
@@ -132,7 +120,10 @@ const Home = () => {
                       )}
                       {sliderStatus.currentPlace === i && (
                         <Styled.Description
-                          variants={currentPlaceText(descDimensions.height)}
+                          variants={Variants.currentPlaceText(
+                            descDimensions.height,
+                            sliderStatus.direction
+                          )}
                           animate="visible"
                           initial="hidden"
                         >
