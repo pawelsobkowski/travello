@@ -13,10 +13,33 @@ const Home = () => {
   const [sliderStatus, setSliderStatus] = useState({
     currentPlace: 0,
     previousPlace: -1,
+    direction: -1,
   });
 
   const [titleElement, titleDimensions] = useDimensions();
   const [descElement, descDimensions] = useDimensions();
+
+  const currentPlaceText = (height) => ({
+    visible: {
+      y: height * -1,
+      transition: {
+        ease: 'easeInOut',
+        duration: 0.5,
+      },
+    },
+    hidden: { y: sliderStatus.direction === -1 ? 0 : height * -2 },
+  });
+
+  const previousPlaceText = (height) => ({
+    visible: {
+      y: sliderStatus.direction === -1 ? height * 2 * sliderStatus.direction : 0,
+      transition: {
+        ease: 'easeInOut',
+        duration: 0.5,
+      },
+    },
+    hidden: { y: height * -1 },
+  });
 
   const [data] = useState([
     {
@@ -53,7 +76,7 @@ const Home = () => {
     if (currentPlace < 0) currentPlace = 3;
     if (currentPlace > 3) currentPlace = 0;
 
-    setSliderStatus({ currentPlace, previousPlace });
+    setSliderStatus({ currentPlace, previousPlace, direction: dir === '+' ? -1 : 1 });
   };
 
   return (
@@ -69,18 +92,18 @@ const Home = () => {
                     <>
                       {sliderStatus.previousPlace === i && (
                         <Styled.Title
-                          initial={{ y: titleDimensions.height * -1 }}
-                          animate={{ y: titleDimensions.height * -2 }}
-                          transition={{ ease: 'easeInOut', duration: 0.5 }}
+                          variants={previousPlaceText(titleDimensions.height)}
+                          animate="visible"
+                          initial="hidden"
                         >
                           {el.name}
                         </Styled.Title>
                       )}
                       {sliderStatus.currentPlace === i && (
                         <Styled.Title
-                          initial={{ y: 0 }}
-                          animate={{ y: titleDimensions.height * -1 }}
-                          transition={{ ease: 'easeInOut', duration: 0.5 }}
+                          variants={currentPlaceText(titleDimensions.height)}
+                          animate="visible"
+                          initial="hidden"
                         >
                           {el.name}
                         </Styled.Title>
@@ -98,9 +121,9 @@ const Home = () => {
                     <>
                       {sliderStatus.previousPlace === i && (
                         <Styled.Description
-                          initial={{ y: descDimensions.height * -1 }}
-                          animate={{ y: descDimensions.height * -2 }}
-                          transition={{ ease: 'easeInOut', duration: 0.5 }}
+                          variants={previousPlaceText(descDimensions.height)}
+                          animate="visible"
+                          initial="hidden"
                         >
                           Kuala Lumpur is the cultural, financial and economic centre of Malaysia.
                           It is also home to the Parliament of Malaysia and the official residence
@@ -109,9 +132,9 @@ const Home = () => {
                       )}
                       {sliderStatus.currentPlace === i && (
                         <Styled.Description
-                          initial={{ y: 0 }}
-                          animate={{ y: descDimensions.height * -1 }}
-                          transition={{ ease: 'easeInOut', duration: 0.5 }}
+                          variants={currentPlaceText(descDimensions.height)}
+                          animate="visible"
+                          initial="hidden"
                         >
                           Kuala Lumpur is the cultural, financial and economic centre of Malaysia.
                           It is also home to the Parliament of Malaysia and the official residence

@@ -55,7 +55,15 @@ const Title = styled(motion.h1)`
   top: 100%;
   left: 0;
 
+  @media (min-width: ${({ theme }) => theme.breakingPoints.mobile}) {
+    font-size: 6rem;
+  }
+
   @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
+    font-size: 7.8rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
     font-size: 6rem;
   }
 
@@ -67,6 +75,7 @@ const Title = styled(motion.h1)`
 const DescriptionWrapper = styled(motion.div)`
   position: relative;
   overflow: hidden;
+  margin: 20px 0;
 `;
 
 const Description = styled(motion.p)`
