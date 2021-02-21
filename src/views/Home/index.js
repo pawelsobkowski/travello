@@ -149,7 +149,7 @@ const Home = () => {
               <Button type="button" icon={<ArrowRight />} isPrimary={false}>
                 Read more
               </Button>
-              <Button type="button" icon={<Compass />} onClick={() => changeSlide()}>
+              <Button type="button" icon={<Compass />}>
                 Explore
               </Button>
             </Styled.ButtonsWrapper>
