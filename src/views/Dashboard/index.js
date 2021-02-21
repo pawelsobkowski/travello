@@ -1,8 +1,10 @@
 import Styled from './style';
+import CardsSection from '../../components/CardsSection';
 
 const Dashboard = () => (
   <Styled.Container>
-    <Styled.Title>Dashboard</Styled.Title>
+    <CardsSection title="Discover" />
+    <CardsSection title="Popular" />
   </Styled.Container>
 );
 
