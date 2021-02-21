@@ -120,6 +120,28 @@ const DotsWrapper = styled.div`
   }
 `;
 
+const SliderWrapper = styled.div`
+  height: 100%;
+  display: grid;
+  grid-template-rows: 80% 20%;
+`;
+
+const Slider = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ControlsWrapper = styled(Slider)`
+  justify-content: space-between;
+`;
+
+const Controls = styled.div`
+  width: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.5rem;
+`;
+
 const Styled = {
   Main,
   Wrapper,
@@ -131,6 +153,10 @@ const Styled = {
   DescriptionWrapper,
   Description,
   DotsWrapper,
+  SliderWrapper,
+  Slider,
+  Controls,
+  ControlsWrapper,
 };
 
 export default Styled;

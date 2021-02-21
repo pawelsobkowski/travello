@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import useDimensions from 'react-use-dimensions';
 import Button from '../../components/ButtonWIthIcon';
 import IconButton from '../../components/IconButton';
+import Card from '../../components/SliderCard';
 import Styled from './styles';
 import { ReactComponent as ArrowRight } from '../../assets/icon/arrow_right.svg';
 import { ReactComponent as Compass } from '../../assets/icon/compass.svg';
@@ -50,12 +51,12 @@ const Home = () => {
   const changeSlide = (dir = '+') => {
     let { currentPlace } = sliderStatus;
     const previousPlace = currentPlace;
-    currentPlace = dir === '+' ? (currentPlace += 1) : (currentPlace -= 1);
+    currentPlace = dir === '-' ? (currentPlace += 1) : (currentPlace -= 1);
 
     if (currentPlace < 0) currentPlace = 3;
     if (currentPlace > 3) currentPlace = 0;
 
-    setSliderStatus({ currentPlace, previousPlace, direction: dir === '+' ? -1 : 1 });
+    setSliderStatus({ currentPlace, previousPlace, direction: dir === '-' ? -1 : 1 });
   };
 
   return (
@@ -154,10 +155,29 @@ const Home = () => {
               </Button>
             </Styled.ButtonsWrapper>
           </Styled.TextWrapper>
-          <div>
-            <IconButton onClick={() => changeSlide('-')} icon={<ChevronLeft />} />
-            <IconButton onClick={() => changeSlide()} icon={<ChevronRight />} />
-          </div>
+          <Styled.SliderWrapper>
+            <Styled.Slider>
+              {data.map((el, i) => (
+                <>
+                  {sliderStatus.currentPlace !== i && (
+                    <Card
+                      primary
+                      sliderStatus
+                      name={el.name}
+                      coordinates="41.883333, 12.5"
+                      background={el.photoUrl}
+                    />
+                  )}
+                </>
+              ))}
+            </Styled.Slider>
+            <Styled.ControlsWrapper>
+              <Styled.Controls>
+                <IconButton onClick={() => changeSlide('-')} icon={<ChevronLeft />} />
+                <IconButton onClick={() => changeSlide()} icon={<ChevronRight />} />
+              </Styled.Controls>
+            </Styled.ControlsWrapper>
+          </Styled.SliderWrapper>
         </Styled.Content>
       </Styled.Wrapper>
     </Styled.Main>
