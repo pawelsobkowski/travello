@@ -1,5 +1,5 @@
 import Styled from './style';
-import CardsSection from '../../components/CardsSection';
+import CardsSection from '../../components/CardSlider';
 
 const Dashboard = () => (
   <Styled.Container>
