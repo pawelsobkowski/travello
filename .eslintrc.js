@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  globals: { WebKitCSSMatrix: true },
   extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react'],
   parserOptions: {
     ecmaFeatures: {
