@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import Styled from './styles';
 import { ReactComponent as Avatar } from '../../assets/icon/avatar.svg';
 
-const IconButton = ({ icon, avatar }) => (
-  <Styled.Button type="button">
+const IconButton = ({ icon, avatar, ...rest }) => (
+  <Styled.Button type="button" {...rest}>
     {avatar ? <Styled.AvatarBox avatar={avatar} alt="" /> : icon}
   </Styled.Button>
 );
