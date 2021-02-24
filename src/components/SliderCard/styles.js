@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const Wrapper = styled(motion.div)`
@@ -6,13 +6,9 @@ const Wrapper = styled(motion.div)`
   height: 80%;
   flex-shrink: 0;
   margin: 0.8rem;
-
-  ${({ primary }) =>
-    primary &&
-    css`
-      width: 35%;
-      height: 90%;
-    `}
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 const PlaceName = styled.h2`
