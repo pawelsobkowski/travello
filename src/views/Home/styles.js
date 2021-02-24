@@ -124,6 +124,7 @@ const SliderWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 80% 20%;
+  position: relative;
 `;
 
 const Slider = styled.div`
