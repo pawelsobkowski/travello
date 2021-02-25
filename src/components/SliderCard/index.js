@@ -4,27 +4,16 @@ import Styled from './styles';
 import Variants from '../../variants/home';
 import { useSliderStateContext } from '../../context/sliderContext';
 
-const getTranslateX = (element) => {
-  const style = window.getComputedStyle(element);
-  const matrix = new WebKitCSSMatrix(style.transform);
-  return matrix.m41;
-};
-
 const SliderCard = ({ name, coordinates, background, sliderStatus, cardNumber }) => {
   const state = useSliderStateContext();
   const currentCard = state.order.findIndex((el) => el === cardNumber);
   const card = useRef(null);
-  const trans = useRef(0);
 
   return (
     <Styled.Wrapper
       initial="hidden"
       animate="visible"
-      custom={trans.current}
       variants={Variants.nextSliderCard(sliderStatus.previousPlace, state.direction, currentCard)}
-      onAnimationComplete={() => {
-        trans.current = getTranslateX(card.current);
-      }}
       ref={card}
     >
       <Styled.PlaceName>{name}</Styled.PlaceName>
