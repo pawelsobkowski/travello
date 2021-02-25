@@ -10,6 +10,7 @@ import { ReactComponent as ChevronRight } from '../../assets/icon/chevron_right.
 import { ReactComponent as ChevronLeft } from '../../assets/icon/chevron_left.svg';
 import Variants from '../../variants/home';
 import { useSliderStateContext, useSliderDispatchContext } from '../../context/sliderContext';
+import data from '../../data';
 
 const Home = () => {
   const state = useSliderStateContext();
@@ -18,32 +19,7 @@ const Home = () => {
   const [titleElement, titleDimensions] = useDimensions();
   const [descElement, descDimensions] = useDimensions();
 
-  const [data] = useState([
-    {
-      id: 1,
-      photoUrl:
-        'https://firebasestorage.googleapis.com/v0/b/travello-5caa6.appspot.com/o/places%2Fcity%2Fkuala_lumpur.jpg?alt=media&token=43445caa-4c77-450d-8587-8b9908320e10',
-      name: 'Kuala Lumpur',
-    },
-    {
-      id: 2,
-      photoUrl:
-        'https://firebasestorage.googleapis.com/v0/b/travello-5caa6.appspot.com/o/places%2Fcity%2Frome.jpg?alt=media&token=e9d8b3c0-9834-4719-b3fa-71ae2ca888f8',
-      name: 'Rome',
-    },
-    {
-      id: 3,
-      photoUrl:
-        'https://firebasestorage.googleapis.com/v0/b/travello-5caa6.appspot.com/o/places%2Fnature%2Fgrand_canyon.jpg?alt=media&token=2818af73-8359-4731-9d45-70114ac0d544',
-      name: 'Grand Canyon',
-    },
-    {
-      id: 4,
-      photoUrl:
-        'https://firebasestorage.googleapis.com/v0/b/travello-5caa6.appspot.com/o/places%2Fplace%2Fgolden_gate_bridge.jpg?alt=media&token=6a7c02dc-2a67-402c-8a40-3ee1b406e7fa',
-      name: 'Golden Gate',
-    },
-  ]);
+  const [places] = useState(data);
 
   const changeSlide = (direction = 1) => {
     const { current: currentPlace, order } = state;
@@ -68,13 +44,13 @@ const Home = () => {
   };
 
   return (
-    <Styled.Main background={data[0].photoUrl}>
+    <Styled.Main background={places[0].photoUrl}>
       <Styled.Wrapper>
         <Styled.DotsWrapper />
         <Styled.Content>
           <Styled.TextWrapper>
             <Styled.TitleWrapper style={{ height: titleDimensions.height }}>
-              {data.map((el, i) => (
+              {places.map((el, i) => (
                 <React.Fragment key={el.id}>
                   {titleDimensions.height && (
                     <>
@@ -109,7 +85,7 @@ const Home = () => {
               ))}
             </Styled.TitleWrapper>
             <Styled.DescriptionWrapper style={{ height: descDimensions.height }}>
-              {data.map((el, i) => (
+              {places.map((el, i) => (
                 <React.Fragment key={el.id}>
                   {descDimensions.height && (
                     <>
@@ -165,7 +141,7 @@ const Home = () => {
           </Styled.TextWrapper>
           <Styled.SliderWrapper>
             <Styled.Slider>
-              {data.map((el, i) => (
+              {places.map((el, i) => (
                 <Card
                   key={el.id}
                   cardNumber={i}
