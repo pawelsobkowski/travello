@@ -9,6 +9,7 @@ const Wrapper = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 2;
 `;
 
 const PlaceName = styled.h2`
