@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useDimensions from 'react-use-dimensions';
 import Button from '../../components/ButtonWIthIcon';
 import IconButton from '../../components/IconButton';
@@ -10,13 +9,11 @@ import { ReactComponent as Compass } from '../../assets/icon/compass.svg';
 import { ReactComponent as ChevronRight } from '../../assets/icon/chevron_right.svg';
 import { ReactComponent as ChevronLeft } from '../../assets/icon/chevron_left.svg';
 import Variants from '../../variants/home';
+import { useSliderStateContext, useSliderDispatchContext } from '../../context/sliderContext';
 
 const Home = () => {
-  const [sliderStatus, setSliderStatus] = useState({
-    currentPlace: 0,
-    previousPlace: -1,
-    direction: -1,
-  });
+  const state = useSliderStateContext();
+  const dispatch = useSliderDispatchContext();
 
   const [titleElement, titleDimensions] = useDimensions();
   const [descElement, descDimensions] = useDimensions();
@@ -48,15 +45,26 @@ const Home = () => {
     },
   ]);
 
-  const changeSlide = (dir = '+') => {
-    let { currentPlace } = sliderStatus;
-    const previousPlace = currentPlace;
-    currentPlace = dir === '-' ? (currentPlace += 1) : (currentPlace -= 1);
+  const changeSlide = (direction = 1) => {
+    const { current: currentPlace, order } = state;
+    const previous = currentPlace;
+    let current = direction === 1 ? currentPlace + 1 : currentPlace - 1;
 
-    if (currentPlace < 0) currentPlace = 3;
-    if (currentPlace > 3) currentPlace = 0;
+    if (current < 0) current = 3;
+    if (current > 3) current = 0;
 
-    setSliderStatus({ currentPlace, previousPlace, direction: dir === '-' ? -1 : 1 });
+    dispatch({
+      type: 'SET_PROPERTIES',
+      payload: {
+        current,
+        direction,
+        previous,
+        order:
+          direction === -1
+            ? [...order.slice(1), order[0]]
+            : [order[order.length - 1], ...order.slice(0, 3)],
+      },
+    });
   };
 
   return (
@@ -70,11 +78,11 @@ const Home = () => {
                 <React.Fragment key={el.id}>
                   {titleDimensions.height && (
                     <>
-                      {sliderStatus.previousPlace === i && (
+                      {state.previous === i && (
                         <Styled.Title
                           variants={Variants.previousPlaceText(
                             titleDimensions.height,
-                            sliderStatus.direction
+                            state.direction
                           )}
                           animate="visible"
                           initial="hidden"
@@ -82,11 +90,11 @@ const Home = () => {
                           {el.name}
                         </Styled.Title>
                       )}
-                      {sliderStatus.currentPlace === i && (
+                      {state.current === i && (
                         <Styled.Title
                           variants={Variants.currentPlaceText(
                             titleDimensions.height,
-                            sliderStatus.direction
+                            state.direction
                           )}
                           animate="visible"
                           initial="hidden"
@@ -105,11 +113,11 @@ const Home = () => {
                 <React.Fragment key={el.id}>
                   {descDimensions.height && (
                     <>
-                      {sliderStatus.previousPlace === i && (
+                      {state.previous === i && (
                         <Styled.Description
                           variants={Variants.previousPlaceText(
                             descDimensions.height,
-                            sliderStatus.direction
+                            state.direction
                           )}
                           animate="visible"
                           initial="hidden"
@@ -119,11 +127,11 @@ const Home = () => {
                           of the Yang di-Pertuan Agong, the Istana Negara
                         </Styled.Description>
                       )}
-                      {sliderStatus.currentPlace === i && (
+                      {state.current === i && (
                         <Styled.Description
                           variants={Variants.currentPlaceText(
                             descDimensions.height,
-                            sliderStatus.direction
+                            state.direction
                           )}
                           animate="visible"
                           initial="hidden"
@@ -135,7 +143,7 @@ const Home = () => {
                       )}
                     </>
                   )}
-                  {sliderStatus.currentPlace !== i && sliderStatus.previousPlace !== i && (
+                  {state.current !== i && state.previous !== i && (
                     <Styled.Description ref={descElement}>
                       Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is
                       also home to the Parliament of Malaysia and the official residence of the Yang
@@ -158,22 +166,18 @@ const Home = () => {
           <Styled.SliderWrapper>
             <Styled.Slider>
               {data.map((el, i) => (
-                <>
-                  {sliderStatus.currentPlace !== i && (
-                    <Card
-                      primary
-                      sliderStatus
-                      name={el.name}
-                      coordinates="41.883333, 12.5"
-                      background={el.photoUrl}
-                    />
-                  )}
-                </>
+                <Card
+                  key={el.id}
+                  cardNumber={i}
+                  name={el.name}
+                  coordinates="41.883333, 12.5"
+                  background={el.photoUrl}
+                />
               ))}
             </Styled.Slider>
             <Styled.ControlsWrapper>
               <Styled.Controls>
-                <IconButton onClick={() => changeSlide('-')} icon={<ChevronLeft />} />
+                <IconButton onClick={() => changeSlide(-1)} icon={<ChevronLeft />} />
                 <IconButton onClick={() => changeSlide()} icon={<ChevronRight />} />
               </Styled.Controls>
             </Styled.ControlsWrapper>
