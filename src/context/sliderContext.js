@@ -20,6 +20,7 @@ const sliderReducer = (state, action) => {
 export const SliderProvider = ({ children }) => {
   const [state, dispatch] = useReducer(sliderReducer, {
     current: 0,
+    previous: -1,
     order: [0, 1, 2, 3],
     direction: 1,
   });
