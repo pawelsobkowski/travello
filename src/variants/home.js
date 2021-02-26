@@ -75,6 +75,9 @@ const nextSliderCard = (previousPlace, direction, currentCard, width = 166) => {
               x: width * 3,
               opacity: 0,
               scale: 0.8,
+              transitionEnd: {
+                scale: 1,
+              },
               ...initialConfig,
             },
           };
@@ -92,7 +95,6 @@ const nextSliderCard = (previousPlace, direction, currentCard, width = 166) => {
           return {
             visible: {
               x: width * 2,
-
               ...initialConfig,
             },
           };
