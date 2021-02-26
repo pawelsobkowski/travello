@@ -10,12 +10,12 @@ const currentPlaceText = (height, direction) => ({
     y: height * -1,
     ...initialConfig,
   },
-  hidden: { y: direction === -1 ? 0 : height * -2 },
+  hidden: { y: direction === -1 ? height * -2 : 0 },
 });
 
 const previousPlaceText = (height, direction) => ({
   visible: {
-    y: direction === -1 ? height * 2 * direction : 0,
+    y: direction === -1 ? 0 : height * -2 * direction,
     ...initialConfig,
   },
   hidden: { y: height * -1 },

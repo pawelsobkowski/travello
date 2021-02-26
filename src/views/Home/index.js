@@ -24,7 +24,7 @@ const Home = () => {
   const changeSlide = (direction = 1) => {
     const { current: currentPlace, order } = state;
     const previous = currentPlace;
-    let current = direction === 1 ? currentPlace + 1 : currentPlace - 1;
+    let current = direction === -1 ? currentPlace + 1 : currentPlace - 1;
 
     if (current < 0) current = 3;
     if (current > 3) current = 0;
