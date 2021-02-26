@@ -5,7 +5,7 @@ const Wrapper = styled(motion.div)`
   width: 40%;
   height: 80%;
   flex-shrink: 0;
-  margin: 0.8rem;
+  padding: 0.8rem;
   position: absolute;
   top: 0;
   left: 0;
