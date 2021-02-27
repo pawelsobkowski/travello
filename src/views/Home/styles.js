@@ -52,7 +52,7 @@ const Title = styled(motion.h1)`
   text-transform: uppercase;
   line-height: 100%;
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
 
   @media (min-width: ${({ theme }) => theme.breakingPoints.mobile}) {
@@ -72,6 +72,12 @@ const Title = styled(motion.h1)`
   }
 `;
 
+const HiddenTitle = styled(Title)`
+  z-index: -1;
+  visibility: hidden;
+  position: relative;
+`;
+
 const DescriptionWrapper = styled(motion.div)`
   position: relative;
   overflow: hidden;
@@ -81,7 +87,7 @@ const DescriptionWrapper = styled(motion.div)`
 const Description = styled(motion.p)`
   font-size: 1.3rem;
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
 
   @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
@@ -91,6 +97,12 @@ const Description = styled(motion.p)`
   @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
     font-size: 1.7rem;
   }
+`;
+
+const HiddenDescription = styled(Description)`
+  z-index: -1;
+  visibility: hidden;
+  position: relative;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -151,8 +163,10 @@ const Styled = {
   TextWrapper,
   TitleWrapper,
   Title,
+  HiddenTitle,
   DescriptionWrapper,
   Description,
+  HiddenDescription,
   DotsWrapper,
   SliderWrapper,
   Slider,
