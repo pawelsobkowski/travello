@@ -5,20 +5,19 @@ const initialConfig = {
   },
 };
 
-const currentPlaceText = (height, direction) => ({
-  visible: {
-    y: height * -1,
+const changeText = (height) => ({
+  enter: (direction) => ({
+    y: direction > 0 ? height : height * -1,
+    ...initialConfig,
+  }),
+  center: {
+    y: 0,
     ...initialConfig,
   },
-  hidden: { y: direction === -1 ? height * -2 : 0 },
-});
-
-const previousPlaceText = (height, direction) => ({
-  visible: {
-    y: direction === -1 ? 0 : height * -2 * direction,
+  exit: (direction) => ({
+    y: direction < 0 ? height : height * -1,
     ...initialConfig,
-  },
-  hidden: { y: height * -1 },
+  }),
 });
 
 const nextSliderCard = (previousPlace, direction, currentCard, width = 166) => {
@@ -129,9 +128,8 @@ const nextSliderCard = (previousPlace, direction, currentCard, width = 166) => {
 };
 
 const Variants = {
-  currentPlaceText,
-  previousPlaceText,
   nextSliderCard,
+  changeText,
 };
 
 export default Variants;
