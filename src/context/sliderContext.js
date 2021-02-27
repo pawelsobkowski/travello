@@ -22,7 +22,7 @@ export const SliderProvider = ({ children }) => {
     current: 0,
     previous: -1,
     order: [0, 1, 2, 3],
-    direction: 1,
+    direction: -1,
   });
 
   return (
