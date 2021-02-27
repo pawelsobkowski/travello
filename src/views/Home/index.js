@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useDimensions from 'react-use-dimensions';
+import { AnimatePresence } from 'framer-motion';
 import Button from '../../components/ButtonWIthIcon';
 import IconButton from '../../components/IconButton';
 import Card from '../../components/SliderCard';
@@ -49,87 +50,42 @@ const Home = () => {
         <Styled.DotsWrapper />
         <Styled.Content>
           <Styled.TextWrapper>
-            <Styled.TitleWrapper style={{ height: titleDimensions.height }}>
-              {places.map((el, i) => (
-                <React.Fragment key={el.id}>
-                  {titleDimensions.height && (
-                    <>
-                      {state.previous === i && (
-                        <Styled.Title
-                          variants={Variants.previousPlaceText(
-                            titleDimensions.height,
-                            state.direction
-                          )}
-                          animate="visible"
-                          initial="hidden"
-                        >
-                          {el.name}
-                        </Styled.Title>
-                      )}
-                      {state.current === i && (
-                        <Styled.Title
-                          variants={Variants.currentPlaceText(
-                            titleDimensions.height,
-                            state.direction
-                          )}
-                          animate="visible"
-                          initial="hidden"
-                        >
-                          {el.name}
-                        </Styled.Title>
-                      )}
-                    </>
-                  )}
-                  <Styled.Title ref={titleElement}>{el.name}</Styled.Title>
-                </React.Fragment>
-              ))}
+            <Styled.TitleWrapper>
+              <Styled.HiddenTitle ref={titleElement}>{places[0].name}</Styled.HiddenTitle>
+              <AnimatePresence custom={state.direction}>
+                <Styled.Title
+                  variants={titleDimensions.height && Variants.changeText(titleDimensions.height)}
+                  custom={state.direction}
+                  key={places[state.current].id}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                >
+                  {places[state.current].name}
+                </Styled.Title>
+              </AnimatePresence>
             </Styled.TitleWrapper>
-            <Styled.DescriptionWrapper style={{ height: descDimensions.height }}>
-              {places.map((el, i) => (
-                <React.Fragment key={el.id}>
-                  {descDimensions.height && (
-                    <>
-                      {state.previous === i && (
-                        <Styled.Description
-                          variants={Variants.previousPlaceText(
-                            descDimensions.height,
-                            state.direction
-                          )}
-                          animate="visible"
-                          initial="hidden"
-                        >
-                          Kuala Lumpur is the cultural, financial and economic centre of Malaysia.
-                          It is also home to the Parliament of Malaysia and the official residence
-                          of the Yang di-Pertuan Agong, the Istana Negara
-                        </Styled.Description>
-                      )}
-                      {state.current === i && (
-                        <Styled.Description
-                          variants={Variants.currentPlaceText(
-                            descDimensions.height,
-                            state.direction
-                          )}
-                          animate="visible"
-                          initial="hidden"
-                        >
-                          Kuala Lumpur is the cultural, financial and economic centre of Malaysia.
-                          It is also home to the Parliament of Malaysia and the official residence
-                          of the Yang di-Pertuan Agong, the Istana Negara
-                        </Styled.Description>
-                      )}
-                    </>
-                  )}
-                  {state.current !== i && state.previous !== i && (
-                    <Styled.Description ref={descElement}>
-                      Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is
-                      also home to the Parliament of Malaysia and the official residence of the Yang
-                      di-Pertuan Agong, the Istana Negara
-                    </Styled.Description>
-                  )}
-                </React.Fragment>
-              ))}
+            <Styled.DescriptionWrapper>
+              <Styled.HiddenDescription ref={descElement}>
+                Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is also
+                home to the Parliament of Malaysia and the official residence of the Yang di-Pertuan
+                Agong, the Istana Negara
+              </Styled.HiddenDescription>
+              <AnimatePresence custom={state.direction}>
+                <Styled.Description
+                  variants={descDimensions.height && Variants.changeText(descDimensions.height)}
+                  custom={state.direction}
+                  key={places[state.current].id}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                >
+                  Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is
+                  also home to the Parliament of Malaysia and the official residence of the Yang
+                  di-Pertuan Agong, the Istana Negara
+                </Styled.Description>
+              </AnimatePresence>
             </Styled.DescriptionWrapper>
-
             <Styled.ButtonsWrapper>
               <Button type="button" icon={<ArrowRight />} isPrimary={false}>
                 Read more
