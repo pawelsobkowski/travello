@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const Wrapper = styled(motion.div)`
-  width: 40%;
+  width: 45%;
   height: 80%;
   flex-shrink: 0;
   padding: 0.8rem;
@@ -10,19 +10,62 @@ const Wrapper = styled(motion.div)`
   top: 0;
   left: 0;
   z-index: 2;
+  max-width: 220px;
+  max-height: 310px;
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
+    max-width: 250px;
+    max-height: 350px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
+    height: 90%;
+    max-width: 300px;
+    max-height: 420px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+    max-height: 500px;
+    padding: 1.2rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.very_large_desktop}) {
+    max-width: 330px;
+    max-height: 550px;
+  }
 `;
 
 const PlaceName = styled.h2`
   font-size: 1.4rem;
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
+    font-size: 1.7rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+    font-size: 1.9rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.large_desktop}) {
+    font-size: 2.2rem;
+  }
 `;
 
 const Coordinates = styled.p`
   font-size: 1.1rem;
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
+    font-size: 1.3rem;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.large_desktop}) {
+    font-size: 1.6rem;
+  }
 `;
 
 const Photo = styled.img`
   width: 100%;
-  height: 80%;
+  height: 85%;
   border-radius: 1rem;
   object-fit: cover;
   object-position: fill;

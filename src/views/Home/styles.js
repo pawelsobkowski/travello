@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
 const Main = styled.main`
   height: 100vh;
@@ -34,12 +33,22 @@ const Content = styled.div`
     grid-template-rows: 100%;
     grid-template-columns: 55% 45%;
   }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+    grid-template-columns: 45% 55%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakingPoints.desktop}) and (orientation: portrait) {
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+  }
 `;
 
-const TextContainer = styled(motion.section)`
+const TextContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 250px;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -58,6 +67,13 @@ const ButtonsWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
     max-width: 500px;
     height: 70px;
+    grid-gap: 20px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.large_desktop}) {
+    max-width: 600px;
+    height: 80px;
+    grid-gap: 30px;
   }
 `;
 
@@ -74,6 +90,21 @@ const SliderWrapper = styled.div`
   display: grid;
   grid-template-rows: 80% 20%;
   position: relative;
+  align-self: center;
+  min-height: 250px;
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
+    max-height: 480px;
+    grid-template-rows: 85% 15%;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+    max-height: 550px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.very_large_desktop}) {
+    max-height: 650px;
+  }
 `;
 
 const Slider = styled.div`
@@ -90,6 +121,7 @@ const Controls = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.5rem;
+  padding-left: 0.8rem;
 `;
 
 const Styled = {
