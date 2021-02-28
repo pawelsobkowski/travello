@@ -16,10 +16,13 @@ const theme = {
     black_063: hexToRgb('#000', 0.63),
   },
   breakingPoints: {
+    small_mobile: '320px',
     mobile: '640px',
     tablet: '768px',
     laptop: '1024px',
     desktop: '1280px',
+    large_desktop: '1440px',
+    very_large_desktop: '1800px',
   },
 };
 
