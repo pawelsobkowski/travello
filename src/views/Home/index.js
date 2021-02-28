@@ -49,30 +49,34 @@ const Home = () => {
       <Styled.Wrapper>
         <Styled.DotsWrapper />
         <Styled.Content>
-          <Styled.TextWrapper>
-            <Styled.TitleWrapper>
-              <Styled.HiddenTitle ref={titleElement}>{places[0].name}</Styled.HiddenTitle>
+          <Styled.TextContainer>
+            <Styled.TextWrapper>
+              <Styled.Text ref={titleElement} isHidden isTitle>
+                {places[0].name}
+              </Styled.Text>
               <AnimatePresence custom={state.direction}>
-                <Styled.Title
+                <Styled.Text
                   variants={titleDimensions.height && Variants.changeText(titleDimensions.height)}
                   custom={state.direction}
                   key={places[state.current].id}
                   initial="enter"
                   animate="center"
                   exit="exit"
+                  isTitle
+                  as="h1"
                 >
                   {places[state.current].name}
-                </Styled.Title>
+                </Styled.Text>
               </AnimatePresence>
-            </Styled.TitleWrapper>
+            </Styled.TextWrapper>
             <Styled.DescriptionWrapper>
-              <Styled.HiddenDescription ref={descElement}>
+              <Styled.Text ref={descElement} isHidden>
                 Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is also
                 home to the Parliament of Malaysia and the official residence of the Yang di-Pertuan
                 Agong, the Istana Negara
-              </Styled.HiddenDescription>
+              </Styled.Text>
               <AnimatePresence custom={state.direction}>
-                <Styled.Description
+                <Styled.Text
                   variants={descDimensions.height && Variants.changeText(descDimensions.height)}
                   custom={state.direction}
                   key={places[state.current].id}
@@ -83,7 +87,7 @@ const Home = () => {
                   Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is
                   also home to the Parliament of Malaysia and the official residence of the Yang
                   di-Pertuan Agong, the Istana Negara
-                </Styled.Description>
+                </Styled.Text>
               </AnimatePresence>
             </Styled.DescriptionWrapper>
             <Styled.ButtonsWrapper>
@@ -94,7 +98,7 @@ const Home = () => {
                 Explore
               </Button>
             </Styled.ButtonsWrapper>
-          </Styled.TextWrapper>
+          </Styled.TextContainer>
           <Styled.SliderWrapper>
             <Styled.Slider>
               {places.map((el, i) => (

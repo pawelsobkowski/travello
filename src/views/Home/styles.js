@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 const Main = styled.main`
@@ -36,55 +36,22 @@ const Content = styled.div`
   }
 `;
 
-const TextWrapper = styled(motion.section)`
+const TextContainer = styled(motion.section)`
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const TitleWrapper = styled(motion.div)`
+const TextWrapper = styled(motion.div)`
   overflow: hidden;
   position: relative;
 `;
 
-const Title = styled(motion.h1)`
-  font-size: 4rem;
-  text-transform: uppercase;
-  line-height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.mobile}) {
-    font-size: 6rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    font-size: 7.8rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
-    font-size: 6rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
-    font-size: 7rem;
-  }
-`;
-
-const HiddenTitle = styled(Title)`
-  z-index: -1;
-  visibility: hidden;
-  position: relative;
-`;
-
-const DescriptionWrapper = styled(motion.div)`
-  position: relative;
-  overflow: hidden;
+const DescriptionWrapper = styled(TextWrapper)`
   margin: 20px 0;
 `;
 
-const Description = styled(motion.p)`
+const Text = styled(motion.p)`
   font-size: 1.3rem;
   position: absolute;
   top: 0;
@@ -97,12 +64,38 @@ const Description = styled(motion.p)`
   @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
     font-size: 1.7rem;
   }
-`;
 
-const HiddenDescription = styled(Description)`
-  z-index: -1;
-  visibility: hidden;
-  position: relative;
+  ${({ isTitle }) =>
+    isTitle &&
+    css`
+      font-size: 4rem;
+      text-transform: uppercase;
+      line-height: 100%;
+
+      @media (min-width: ${({ theme }) => theme.breakingPoints.mobile}) {
+        font-size: 6rem;
+      }
+
+      @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
+        font-size: 7.8rem;
+      }
+
+      @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
+        font-size: 6rem;
+      }
+
+      @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+        font-size: 7rem;
+      }
+    `}
+
+  ${({ isHidden }) =>
+    isHidden &&
+    css`
+      z-index: -1;
+      visibility: hidden;
+      position: relative;
+    `}
 `;
 
 const ButtonsWrapper = styled.div`
@@ -160,13 +153,10 @@ const Styled = {
   Wrapper,
   Content,
   ButtonsWrapper,
+  TextContainer,
   TextWrapper,
-  TitleWrapper,
-  Title,
-  HiddenTitle,
   DescriptionWrapper,
-  Description,
-  HiddenDescription,
+  Text,
   DotsWrapper,
   SliderWrapper,
   Slider,
