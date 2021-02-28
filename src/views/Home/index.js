@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import useDimensions from 'react-use-dimensions';
-import { AnimatePresence } from 'framer-motion';
 import Button from '../../components/ButtonWIthIcon';
 import IconButton from '../../components/IconButton';
 import Card from '../../components/SliderCard';
@@ -9,16 +7,13 @@ import { ReactComponent as ArrowRight } from '../../assets/icon/arrow_right.svg'
 import { ReactComponent as Compass } from '../../assets/icon/compass.svg';
 import { ReactComponent as ChevronRight } from '../../assets/icon/chevron_right.svg';
 import { ReactComponent as ChevronLeft } from '../../assets/icon/chevron_left.svg';
-import Variants from '../../variants/home';
 import { useSliderStateContext, useSliderDispatchContext } from '../../context/sliderContext';
 import data from '../../data';
+import Text from '../../components/HomeText';
 
 const Home = () => {
   const state = useSliderStateContext();
   const dispatch = useSliderDispatchContext();
-
-  const [titleElement, titleDimensions] = useDimensions();
-  const [descElement, descDimensions] = useDimensions();
 
   const [places] = useState(data);
 
@@ -50,46 +45,14 @@ const Home = () => {
         <Styled.DotsWrapper />
         <Styled.Content>
           <Styled.TextContainer>
-            <Styled.TextWrapper>
-              <Styled.Text ref={titleElement} isHidden isTitle>
-                {places[0].name}
-              </Styled.Text>
-              <AnimatePresence custom={state.direction}>
-                <Styled.Text
-                  variants={titleDimensions.height && Variants.changeText(titleDimensions.height)}
-                  custom={state.direction}
-                  key={places[state.current].id}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  isTitle
-                  as="h1"
-                >
-                  {places[state.current].name}
-                </Styled.Text>
-              </AnimatePresence>
-            </Styled.TextWrapper>
-            <Styled.DescriptionWrapper>
-              <Styled.Text ref={descElement} isHidden>
-                Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is also
-                home to the Parliament of Malaysia and the official residence of the Yang di-Pertuan
-                Agong, the Istana Negara
-              </Styled.Text>
-              <AnimatePresence custom={state.direction}>
-                <Styled.Text
-                  variants={descDimensions.height && Variants.changeText(descDimensions.height)}
-                  custom={state.direction}
-                  key={places[state.current].id}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                >
-                  Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is
-                  also home to the Parliament of Malaysia and the official residence of the Yang
-                  di-Pertuan Agong, the Istana Negara
-                </Styled.Text>
-              </AnimatePresence>
-            </Styled.DescriptionWrapper>
+            <Text id={places[state.current].id} isTitle>
+              {places[state.current].name}
+            </Text>
+            <Text id={places[state.current].id}>
+              Kuala Lumpur is the cultural, financial and economic centre of Malaysia. It is also
+              home to the Parliament of Malaysia and the official residence of the Yang di-Pertuan
+              Agong, the Istana Negara
+            </Text>
             <Styled.ButtonsWrapper>
               <Button type="button" icon={<ArrowRight />} isPrimary={false}>
                 Read more
