@@ -33,7 +33,7 @@ const Dot = styled(motion.div)`
 `;
 
 const Line = styled.div`
-  width: 0.2rem;
+  width: 0.15rem;
   flex-grow: 1;
   background: ${({ theme }) => theme.colors.grey_063};
 `;
