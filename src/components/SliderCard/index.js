@@ -3,8 +3,10 @@ import useDimensions from 'react-use-dimensions';
 import Styled from './styles';
 import Variants from '../../variants/home';
 import { useSliderStateContext } from '../../context/sliderContext';
+import { ReactComponent as Bookmark } from '../../assets/icon/bookmark.svg';
+import IconButton from '../IconButton';
 
-const SliderCard = ({ name, coordinates, background, cardNumber }) => {
+const SliderCard = ({ name, coordinates, background, cardNumber, isBookmarked }) => {
   const state = useSliderStateContext();
   const currentCard = state.order.findIndex((el) => el === cardNumber);
 
@@ -24,7 +26,12 @@ const SliderCard = ({ name, coordinates, background, cardNumber }) => {
     >
       <Styled.PlaceName>{name}</Styled.PlaceName>
       <Styled.Coordinates>{coordinates}</Styled.Coordinates>
-      <Styled.Photo src={background} alt={name} />
+      <Styled.PhotoWrapper>
+        <Styled.BookmarkWrapper isBookmarked={isBookmarked}>
+          <IconButton icon={<Bookmark />} />
+        </Styled.BookmarkWrapper>
+        <Styled.Photo src={background} alt={name} />
+      </Styled.PhotoWrapper>
     </Styled.Wrapper>
   );
 };
@@ -34,6 +41,11 @@ SliderCard.propTypes = {
   coordinates: PropTypes.string.isRequired,
   background: PropTypes.string.isRequired,
   cardNumber: PropTypes.number.isRequired,
+  isBookmarked: PropTypes.bool,
+};
+
+SliderCard.defaultProps = {
+  isBookmarked: false,
 };
 
 export default SliderCard;

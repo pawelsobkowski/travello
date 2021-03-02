@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 const Wrapper = styled(motion.div)`
@@ -63,9 +63,35 @@ const Coordinates = styled.p`
   }
 `;
 
-const Photo = styled.img`
+const PhotoWrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 85%;
+  overflow: hidden;
+`;
+
+const BookmarkWrapper = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+
+  & svg > * {
+    fill: ${({ theme }) => theme.colors.white};
+  }
+
+  ${({ isBookmarked }) =>
+    isBookmarked &&
+    css`
+      & svg > * {
+        stroke: ${({ theme }) => theme.colors.primary_blue};
+        fill: ${({ theme }) => theme.colors.primary_blue};
+      }
+    `}
+`;
+
+const Photo = styled.img`
+  width: 100%;
+  height: 100%;
   border-radius: 1rem;
   object-fit: cover;
   object-position: fill;
@@ -75,7 +101,9 @@ const Styled = {
   Wrapper,
   PlaceName,
   Coordinates,
+  PhotoWrapper,
   Photo,
+  BookmarkWrapper,
 };
 
 export default Styled;
