@@ -4,7 +4,6 @@ const Main = styled.main`
   height: 100vh;
   padding-top: 60px;
   overflow: hidden;
-  background: url(${({ background }) => background}) center no-repeat;
   background-size: cover;
   color: ${({ theme }) => theme.colors.white};
 

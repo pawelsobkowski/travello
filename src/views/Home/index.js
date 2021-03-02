@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import Button from '../../components/ButtonWIthIcon';
-import IconButton from '../../components/IconButton';
-import Card from '../../components/SliderCard';
 import Styled from './styles';
 import { ReactComponent as ArrowRight } from '../../assets/icon/arrow_right.svg';
 import { ReactComponent as Compass } from '../../assets/icon/compass.svg';
@@ -9,8 +6,12 @@ import { ReactComponent as ChevronRight } from '../../assets/icon/chevron_right.
 import { ReactComponent as ChevronLeft } from '../../assets/icon/chevron_left.svg';
 import { useSliderStateContext, useSliderDispatchContext } from '../../context/sliderContext';
 import data from '../../data';
+import Button from '../../components/ButtonWIthIcon';
+import IconButton from '../../components/IconButton';
+import Card from '../../components/SliderCard';
 import Text from '../../components/HomeText';
 import Dots from '../../components/Dots';
+import Background from '../../components/HomeBackground';
 
 const Home = () => {
   const state = useSliderStateContext();
@@ -41,7 +42,8 @@ const Home = () => {
   };
 
   return (
-    <Styled.Main background={places[0].photoUrl}>
+    <Styled.Main>
+      <Background background={places[state.current].backgroundUrl} />
       <Styled.Wrapper>
         <Dots />
         <Styled.Content>
