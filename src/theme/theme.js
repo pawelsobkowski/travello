@@ -14,6 +14,8 @@ const theme = {
     profile_blue: '#003B59',
     black_087: hexToRgb('#000', 0.87),
     black_063: hexToRgb('#000', 0.63),
+    grey_087: hexToRgb('#CBCBCB', 0.87),
+    grey_063: hexToRgb('#CBCBCB', 0.63),
   },
   breakingPoints: {
     small_mobile: '320px',
