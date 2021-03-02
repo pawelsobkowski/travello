@@ -9,15 +9,14 @@ const TextWrapper = styled(motion.div)`
     isDescription &&
     css`
       max-width: 600px;
-      margin: 0.5rem 0 1rem;
+      margin-bottom: 3rem;
 
-      @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
-        margin: 1rem 0 1.5rem;
+      @media (min-width: ${({ theme }) => theme.breakingPoints.mobile}) {
+        margin-bottom: 6rem;
       }
 
       @media (min-width: ${({ theme }) => theme.breakingPoints.large_desktop}) {
         max-width: 700px;
-        margin: 1.5rem 0 2rem;
       }
     `}
 `;
