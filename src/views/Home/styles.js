@@ -77,14 +77,6 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-const DotsWrapper = styled.div`
-  display: none;
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    display: block;
-  }
-`;
-
 const SliderWrapper = styled.div`
   height: 100%;
   display: grid;
@@ -130,7 +122,6 @@ const Styled = {
   Content,
   ButtonsWrapper,
   TextContainer,
-  DotsWrapper,
   SliderWrapper,
   Slider,
   Controls,
