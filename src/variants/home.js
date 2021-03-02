@@ -1,8 +1,17 @@
 const initialConfig = {
   transition: {
     ease: 'easeInOut',
-    duration: 0.5,
+    duration: 0.7,
   },
+};
+
+const changeActiveDot = {
+  visible: { scale: 2, transition: { ease: 'easeIn' } },
+};
+
+const changeActiveDotContent = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { ease: 'easeIn' } },
 };
 
 const changeText = (height) => ({
@@ -130,6 +139,8 @@ const nextSliderCard = (previousPlace, direction, currentCard, width = 166) => {
 const Variants = {
   nextSliderCard,
   changeText,
+  changeActiveDot,
+  changeActiveDotContent,
 };
 
 export default Variants;
