@@ -6,12 +6,12 @@ const initialConfig = {
 };
 
 const changeActiveDot = {
-  visible: { scale: 2, transition: { ease: 'easeIn' } },
+  visible: { scale: 2, transition: { ease: 'linear', duration: 0.3 } },
 };
 
 const changeActiveDotContent = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { ease: 'easeIn' } },
+  visible: { opacity: 1, transition: { ease: 'linear', duration: 0.3, delay: 0.2 } },
 };
 
 const changeText = (height) => ({
