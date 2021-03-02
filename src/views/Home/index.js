@@ -10,6 +10,7 @@ import { ReactComponent as ChevronLeft } from '../../assets/icon/chevron_left.sv
 import { useSliderStateContext, useSliderDispatchContext } from '../../context/sliderContext';
 import data from '../../data';
 import Text from '../../components/HomeText';
+import Dots from '../../components/Dots';
 
 const Home = () => {
   const state = useSliderStateContext();
@@ -42,7 +43,7 @@ const Home = () => {
   return (
     <Styled.Main background={places[0].photoUrl}>
       <Styled.Wrapper>
-        <Styled.DotsWrapper />
+        <Dots />
         <Styled.Content>
           <Styled.TextContainer>
             <Text id={places[state.current].id} isTitle>
