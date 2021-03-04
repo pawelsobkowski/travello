@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
 const Main = styled.main`
   height: 100vh;
   padding-top: 60px;
   overflow: hidden;
-  background: url(${({ background }) => background}) center no-repeat;
   background-size: cover;
   color: ${({ theme }) => theme.colors.white};
 
@@ -34,63 +32,22 @@ const Content = styled.div`
     grid-template-rows: 100%;
     grid-template-columns: 55% 45%;
   }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+    grid-template-columns: 45% 55%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakingPoints.desktop}) and (orientation: portrait) {
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+  }
 `;
 
-const TextWrapper = styled(motion.section)`
+const TextContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const TitleWrapper = styled(motion.div)`
-  overflow: hidden;
-  position: relative;
-`;
-
-const Title = styled(motion.h1)`
-  font-size: 4rem;
-  text-transform: uppercase;
-  line-height: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.mobile}) {
-    font-size: 6rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    font-size: 7.8rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
-    font-size: 6rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
-    font-size: 7rem;
-  }
-`;
-
-const DescriptionWrapper = styled(motion.div)`
-  position: relative;
-  overflow: hidden;
-  margin: 20px 0;
-`;
-
-const Description = styled(motion.p)`
-  font-size: 1.3rem;
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    font-size: 1.5rem;
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
-    font-size: 1.7rem;
-  }
+  min-height: 250px;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -109,14 +66,13 @@ const ButtonsWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
     max-width: 500px;
     height: 70px;
+    grid-gap: 20px;
   }
-`;
 
-const DotsWrapper = styled.div`
-  display: none;
-
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    display: block;
+  @media (min-width: ${({ theme }) => theme.breakingPoints.large_desktop}) {
+    max-width: 600px;
+    height: 80px;
+    grid-gap: 30px;
   }
 `;
 
@@ -124,6 +80,22 @@ const SliderWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 80% 20%;
+  position: relative;
+  align-self: center;
+  min-height: 250px;
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.laptop}) {
+    max-height: 480px;
+    grid-template-rows: 85% 15%;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.desktop}) {
+    max-height: 550px;
+  }
+
+  @media (min-width: ${({ theme }) => theme.breakingPoints.very_large_desktop}) {
+    max-height: 650px;
+  }
 `;
 
 const Slider = styled.div`
@@ -140,6 +112,7 @@ const Controls = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1.5rem;
+  padding-left: 0.8rem;
 `;
 
 const Styled = {
@@ -147,12 +120,7 @@ const Styled = {
   Wrapper,
   Content,
   ButtonsWrapper,
-  TextWrapper,
-  TitleWrapper,
-  Title,
-  DescriptionWrapper,
-  Description,
-  DotsWrapper,
+  TextContainer,
   SliderWrapper,
   Slider,
   Controls,

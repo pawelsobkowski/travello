@@ -1,28 +1,51 @@
 import PropTypes from 'prop-types';
+import useDimensions from 'react-use-dimensions';
 import Styled from './styles';
+import Variants from '../../variants/home';
+import { useSliderStateContext } from '../../context/sliderContext';
+import { ReactComponent as Bookmark } from '../../assets/icon/bookmark.svg';
+import IconButton from '../IconButton';
 
-const SliderCard = ({ primary, name, coordinates, background }) => (
-  <Styled.Wrapper primary={primary}>
-    <Styled.PlaceName>{name}</Styled.PlaceName>
-    <Styled.Coordinates>{coordinates}</Styled.Coordinates>
-    <Styled.Photo src={background} />
-  </Styled.Wrapper>
-);
+const SliderCard = ({ name, coordinates, background, cardNumber, isBookmarked }) => {
+  const state = useSliderStateContext();
+  const currentCard = state.order.findIndex((el) => el === cardNumber);
+
+  const [card, cardDimensions] = useDimensions();
+
+  return (
+    <Styled.Wrapper
+      initial="hidden"
+      animate="visible"
+      variants={Variants.nextSliderCard(
+        state.previous,
+        state.direction,
+        currentCard,
+        cardDimensions.width
+      )}
+      ref={card}
+    >
+      <Styled.PlaceName>{name}</Styled.PlaceName>
+      <Styled.Coordinates>{coordinates}</Styled.Coordinates>
+      <Styled.PhotoWrapper>
+        <Styled.BookmarkWrapper isBookmarked={isBookmarked}>
+          <IconButton icon={<Bookmark />} />
+        </Styled.BookmarkWrapper>
+        <Styled.Photo src={background} alt={name} />
+      </Styled.PhotoWrapper>
+    </Styled.Wrapper>
+  );
+};
 
 SliderCard.propTypes = {
-  primary: PropTypes.bool,
   name: PropTypes.string.isRequired,
   coordinates: PropTypes.string.isRequired,
   background: PropTypes.string.isRequired,
-  sliderStatus: PropTypes.shape({
-    currentPlace: PropTypes.number,
-    previousPlace: PropTypes.number,
-    direction: PropTypes.number,
-  }).isRequired,
+  cardNumber: PropTypes.number.isRequired,
+  isBookmarked: PropTypes.bool,
 };
 
 SliderCard.defaultProps = {
-  primary: false,
+  isBookmarked: false,
 };
 
 export default SliderCard;
