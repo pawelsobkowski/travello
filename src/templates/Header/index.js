@@ -14,7 +14,7 @@ const Header = ({ children, variant }) => {
 
   return (
     <>
-      <Styled.Header variant={variant}>
+      <Styled.Header>
         <div />
         {variant === 'close' ? (
           <IconButton
@@ -26,13 +26,9 @@ const Header = ({ children, variant }) => {
         ) : (
           <>
             <Styled.ButtonsWrapper>
-              <Styled.ButtonWrapper>
-                <IconButton type="button" icon={<Search />} />
-              </Styled.ButtonWrapper>
+              <IconButton type="button" icon={<Search />} />
               {isLoggedIn ? (
-                <Styled.ButtonWrapper side="left">
-                  <IconButton isUser />
-                </Styled.ButtonWrapper>
+                <IconButton isUser />
               ) : (
                 <Styled.SignInButton
                   to={`/${
