@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import hexToRgba from 'hex-to-rgba';
 import { Link } from 'react-router-dom';
 
@@ -14,10 +14,13 @@ const Header = styled.header`
   z-index: 10;
   align-items: center;
 
-  @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    height: 70px;
-    grid-template-columns: 1fr 150px;
-  }
+  ${({ variant }) =>
+    variant === 'close' &&
+    css`
+      display: flex;
+      justify-content: space-between;
+      height: 80px;
+    `}
 `;
 
 const ButtonsWrapper = styled.div`
