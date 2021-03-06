@@ -6,7 +6,7 @@ const Button = styled.button`
   border-radius: 50%;
   border: 0;
   cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.grey_063};
+  background: ${({ theme }) => theme.colors.grey_063};
   color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
@@ -20,14 +20,30 @@ const Button = styled.button`
 
   & > svg > * {
     stroke: ${({ theme }) => theme.colors.white};
-    fill: none;
+    fill: ${({ $isIconFilled, theme }) => ($isIconFilled ? theme.colors.white : 'none')};
   }
 
-  ${({ variant }) =>
-    variant === 'outlined' &&
+  ${({ avatar }) =>
+    avatar &&
+    css`
+      background: url(${avatar}) center no-repeat;
+      background-size: cover;
+
+      & > svg > * {
+        stroke: ${({ theme }) => theme.colors.white};
+      }
+    `}
+
+  ${({ $isOutlined }) =>
+    $isOutlined &&
     css`
       border: 2px solid ${({ theme }) => theme.colors.grey_063};
       background: transparent;
+      transition: background 0.2s;
+
+      &:hover {
+        background: ${({ theme }) => theme.colors.grey_020};
+      }
 
       & > svg {
         width: 45%;
@@ -36,16 +52,8 @@ const Button = styled.button`
     `}
 `;
 
-const AvatarBox = styled.div`
-  width: 100%;
-  height: 100%;
-  background: url(${({ avatar }) => avatar}) center no-repeat;
-  background-size: cover;
-`;
-
 const Styled = {
   Button,
-  AvatarBox,
 };
 
 export default Styled;
