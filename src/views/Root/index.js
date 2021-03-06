@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from '../Home';
 import Dashboard from '../Dashboard';
 import Profile from '../Profile';
@@ -15,11 +15,6 @@ const Root = () => (
       <Route exact path="/profile">
         <Profile />
       </Route>
-      <Route exact path={['/', '/home']}>
-        <Header>
-          <Home />
-        </Header>
-      </Route>
       <Route path="/dashboard">
         <Header>
           <Dashboard />
@@ -30,8 +25,10 @@ const Root = () => (
           <Details />
         </Header>
       </Route>
-      <Route path="*">
-        <Redirect to="/home" />
+      <Route path={['/', '/home']}>
+        <Header>
+          <Home />
+        </Header>
       </Route>
     </Switch>
 
