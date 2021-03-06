@@ -16,6 +16,7 @@ const theme = {
     black_063: hexToRgb('#000', 0.63),
     grey_087: hexToRgb('#CBCBCB', 0.87),
     grey_063: hexToRgb('#CBCBCB', 0.63),
+    grey_020: hexToRgb('#CBCBCB', 0.2),
   },
   breakingPoints: {
     small_mobile: '320px',
