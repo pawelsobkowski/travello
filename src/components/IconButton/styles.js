@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import hexToRgba from 'hex-to-rgba';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
   width: 40px;
@@ -7,8 +6,8 @@ const Button = styled.button`
   border-radius: 50%;
   border: 0;
   cursor: pointer;
-  background-color: ${({ theme }) => hexToRgba(theme.colors.grey, '0.7')};
-  color: ${({ theme }) => hexToRgba(theme.colors.white)};
+  background-color: ${({ theme }) => theme.colors.grey_063};
+  color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +22,18 @@ const Button = styled.button`
     stroke: ${({ theme }) => theme.colors.white};
     fill: none;
   }
+
+  ${({ variant }) =>
+    variant === 'outlined' &&
+    css`
+      border: 2px solid ${({ theme }) => theme.colors.grey_063};
+      background: transparent;
+
+      & > svg {
+        width: 45%;
+        height: 45%;
+      }
+    `}
 `;
 
 const AvatarBox = styled.div`
