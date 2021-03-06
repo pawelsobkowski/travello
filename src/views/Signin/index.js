@@ -1,3 +1,5 @@
-const Signin = () => <h1>Sign in</h1>;
+import Styled from './styles';
+
+const Signin = () => <Styled.Wrapper>Sign in</Styled.Wrapper>;
 
 export default Signin;
