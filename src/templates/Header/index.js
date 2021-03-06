@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Styled from './styles';
 import IconButton from '../../components/IconButton';
 import { ReactComponent as Search } from '../../assets/icon/search.svg';
@@ -18,20 +18,20 @@ const Header = ({ children, variant }) => {
         <div />
         {variant === 'close' ? (
           <IconButton
-            as={Link}
+            isLink
             to={`/${baseUrl.includes(splitedPathname[1]) && splitedPathname[1]}`}
-            variant="outlined"
+            isOutlined
             icon={<Close />}
           />
         ) : (
           <>
             <Styled.ButtonsWrapper>
               <Styled.ButtonWrapper>
-                <IconButton icon={<Search />} />
+                <IconButton type="button" icon={<Search />} />
               </Styled.ButtonWrapper>
               {isLoggedIn ? (
                 <Styled.ButtonWrapper side="left">
-                  <IconButton avatar="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                  <IconButton isUser />
                 </Styled.ButtonWrapper>
               ) : (
                 <Styled.SignInButton
