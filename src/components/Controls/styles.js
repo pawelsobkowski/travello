@@ -22,6 +22,7 @@ const Input = styled(Field)`
   background: ${({ theme }) => theme.colors.lightgrey_063};
   outline: none;
   transition: background 0.2s;
+  color: ${({ theme }) => theme.colors.white};
 
   :focus,
   :hover {
