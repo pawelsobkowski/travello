@@ -1,28 +1,21 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
 import Styled from './styles';
 import IconButton from '../../components/IconButton';
 import { ReactComponent as Search } from '../../assets/icon/search.svg';
 import { ReactComponent as Close } from '../../assets/icon/close.svg';
+import useCurrentLocation from '../../hooks/useCurrentLocation';
 
 const Header = ({ children, variant }) => {
   const [isLoggedIn] = useState(false);
-  const { pathname } = useLocation();
-  const baseUrl = ['home', 'details', 'dashboard'];
-  const splitedPathname = pathname.split('/');
+  const [baseLocation] = useCurrentLocation();
 
   return (
     <>
       <Styled.Header>
         <div />
         {variant === 'close' ? (
-          <IconButton
-            isLink
-            to={`/${baseUrl.includes(splitedPathname[1]) && splitedPathname[1]}`}
-            isOutlined
-            icon={<Close />}
-          />
+          <IconButton isLink to={baseLocation} isOutlined icon={<Close />} />
         ) : (
           <>
             <Styled.ButtonsWrapper>
@@ -30,13 +23,7 @@ const Header = ({ children, variant }) => {
               {isLoggedIn ? (
                 <IconButton isUser />
               ) : (
-                <Styled.SignInButton
-                  to={`/${
-                    baseUrl.includes(splitedPathname[1]) ? splitedPathname[1] : 'home'
-                  }/signin`}
-                >
-                  Sign in
-                </Styled.SignInButton>
+                <Styled.SignInButton to={`${baseLocation}/signin`}>Sign in</Styled.SignInButton>
               )}
             </Styled.ButtonsWrapper>
           </>
