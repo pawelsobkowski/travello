@@ -11,7 +11,7 @@ const HomeText = ({ children, isTitle, id }) => {
 
   return (
     <Styled.TextWrapper isDescription={!isTitle}>
-      <Styled.Text ref={dimensionsEl} isTitle={isTitle} isHidden>
+      <Styled.Text ref={dimensionsEl} isTitle={isTitle} isHidden aria-hidden="true">
         {children}
       </Styled.Text>
       <AnimatePresence custom={state.direction} initial={false}>

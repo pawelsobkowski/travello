@@ -27,6 +27,10 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     #root{
         width: 100%;
         height: 100%;

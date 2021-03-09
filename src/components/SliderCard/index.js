@@ -28,7 +28,7 @@ const SliderCard = ({ name, coordinates, background, cardNumber, isBookmarked })
       <Styled.Coordinates>{coordinates}</Styled.Coordinates>
       <Styled.PhotoWrapper>
         <Styled.BookmarkWrapper isBookmarked={isBookmarked}>
-          <IconButton icon={<Bookmark />} />
+          <IconButton tabIndex="-1" icon={<Bookmark />} />
         </Styled.BookmarkWrapper>
         <Styled.Photo src={background} alt={name} />
       </Styled.PhotoWrapper>

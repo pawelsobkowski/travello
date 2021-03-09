@@ -1,36 +1,31 @@
 import styled from 'styled-components';
-import hexToRgba from 'hex-to-rgba';
 import { Link } from 'react-router-dom';
 
 const Header = styled.header`
-  display: grid;
-  grid-template-columns: 1fr 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  padding: 0 2rem;
+  height: 6rem;
+  padding: 0 1rem;
   z-index: 10;
-  align-items: center;
 
   @media (min-width: ${({ theme }) => theme.breakingPoints.tablet}) {
-    height: 70px;
-    grid-template-columns: 1fr 150px;
+    height: 8rem;
+    padding: 0 2rem;
   }
 `;
 
 const ButtonsWrapper = styled.div`
   height: 100%;
+  width: fit-content;
   display: grid;
-  justify-items: center;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
-`;
-
-const ButtonWrapper = styled.div`
-  ${({ side }) => (side === 'left' ? 'justify-self: left' : 'justify-self: right')}
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
 `;
 
 const SignInButton = styled(Link)`
@@ -42,11 +37,14 @@ const SignInButton = styled(Link)`
   font-size: 1.7rem;
   text-decoration: none;
   font-weight: 500;
-  background-color: ${({ theme }) => hexToRgba(theme.colors.grey, '0.9')};
+  background-color: ${({ theme }) => theme.colors.grey_063};
   color: ${({ theme }) => theme.colors.white};
+  transition: background 0.2s;
+  outline: none;
 
-  &:focus {
-    border: ${({ theme }) => theme.colors.black};
+  :hover,
+  :focus {
+    background-color: ${({ theme }) => theme.colors.grey_040};
   }
 `;
 
@@ -54,7 +52,6 @@ const Styled = {
   Header,
   ButtonsWrapper,
   SignInButton,
-  ButtonWrapper,
 };
 
 export default Styled;

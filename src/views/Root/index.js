@@ -1,4 +1,4 @@
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from '../Home';
 import Dashboard from '../Dashboard';
 import Profile from '../Profile';
@@ -8,17 +8,13 @@ import Signin from '../Signin';
 import Signup from '../Signup';
 import Header from '../../templates/Header';
 import MainTemplate from '../../templates/Main';
+import BluredBackground from '../../templates/BluredBackground';
 
 const Root = () => (
   <MainTemplate>
     <Switch>
       <Route exact path="/profile">
         <Profile />
-      </Route>
-      <Route exact path={['/', '/home']}>
-        <Header>
-          <Home />
-        </Header>
       </Route>
       <Route path="/dashboard">
         <Header>
@@ -30,21 +26,35 @@ const Root = () => (
           <Details />
         </Header>
       </Route>
-      <Route path="*">
-        <Redirect to="/home" />
+      <Route path={['/', '/home']}>
+        <Header>
+          <Home />
+        </Header>
       </Route>
     </Switch>
 
     <Route path={['/details/:placeId/search', '/dashboard/search', '/home/search']}>
-      <Search />
+      <BluredBackground>
+        <Header variant="close">
+          <Search />
+        </Header>
+      </BluredBackground>
     </Route>
 
     <Route path={['/details/:placeId/signin', '/dashboard/signin', '/home/signin']}>
-      <Signin />
+      <BluredBackground>
+        <Header variant="close">
+          <Signin />
+        </Header>
+      </BluredBackground>
     </Route>
 
     <Route path={['/details/:placeId/signup', '/dashboard/signup', '/home/signup']}>
-      <Signup />
+      <BluredBackground>
+        <Header variant="close">
+          <Signup />
+        </Header>
+      </BluredBackground>
     </Route>
   </MainTemplate>
 );
