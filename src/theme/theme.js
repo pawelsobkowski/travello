@@ -17,6 +17,7 @@ const theme = {
     black_063: hexToRgb('#000', 0.63),
     grey_087: hexToRgb('#CBCBCB', 0.87),
     grey_063: hexToRgb('#CBCBCB', 0.63),
+    grey_040: hexToRgb('#CBCBCB', 0.4),
     grey_020: hexToRgb('#CBCBCB', 0.2),
     white_063: hexToRgb('#FFF', 0.63),
     lightgrey_087: hexToRgb('#FAFAFA', 0.87),
