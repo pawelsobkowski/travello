@@ -6,12 +6,15 @@ const Button = styled.button`
   border-radius: 50%;
   border: 0;
   cursor: pointer;
-  background: ${({ theme }) => theme.colors.grey_063};
+  background: ${({ theme, isBackground }) =>
+    isBackground ? theme.colors.grey_063 : 'transparent'};
   color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: background 0.2s;
+  outline: none;
 
   & > svg {
     width: 60%;
@@ -21,6 +24,12 @@ const Button = styled.button`
   & > svg > * {
     stroke: ${({ theme }) => theme.colors.white};
     fill: ${({ $isIconFilled, theme }) => ($isIconFilled ? theme.colors.white : 'none')};
+  }
+
+  :hover,
+  :focus {
+    background: ${({ theme, isBackground }) =>
+      isBackground ? theme.colors.grey_040 : theme.colors.grey_087};
   }
 
   ${({ avatar }) =>

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import hexToRgba from 'hex-to-rgba';
 import { Link } from 'react-router-dom';
 
 const Header = styled.header`
@@ -38,11 +37,14 @@ const SignInButton = styled(Link)`
   font-size: 1.7rem;
   text-decoration: none;
   font-weight: 500;
-  background-color: ${({ theme }) => hexToRgba(theme.colors.grey, '0.9')};
+  background-color: ${({ theme }) => theme.colors.grey_063};
   color: ${({ theme }) => theme.colors.white};
+  transition: background 0.2s;
+  outline: none;
 
-  &:focus {
-    border: ${({ theme }) => theme.colors.black};
+  :hover,
+  :focus {
+    background-color: ${({ theme }) => theme.colors.grey_040};
   }
 `;
 

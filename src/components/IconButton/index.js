@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Styled from './styles';
 import { ReactComponent as Avatar } from '../../assets/icon/avatar.svg';
 
-const IconButton = ({ icon, isUser, isLink, isIconFilled, isOutlined, ...rest }) => {
+const IconButton = ({ icon, isUser, isLink, isIconFilled, isOutlined, isBackground, ...rest }) => {
   const avatar = null;
 
   return (
@@ -12,6 +12,7 @@ const IconButton = ({ icon, isUser, isLink, isIconFilled, isOutlined, ...rest })
       avatar={isUser ? avatar : null}
       $isOutlined={isOutlined}
       $isIconFilled={isUser || isIconFilled}
+      isBackground={isBackground}
       {...rest}
     >
       {(!isUser || (isUser && !avatar)) && icon}
@@ -25,6 +26,7 @@ IconButton.propTypes = {
   isLink: PropTypes.bool,
   isOutlined: PropTypes.bool,
   isIconFilled: PropTypes.bool,
+  isBackground: PropTypes.bool,
 };
 
 IconButton.defaultProps = {
@@ -33,6 +35,7 @@ IconButton.defaultProps = {
   isLink: false,
   isOutlined: false,
   isIconFilled: false,
+  isBackground: true,
 };
 
 export default IconButton;

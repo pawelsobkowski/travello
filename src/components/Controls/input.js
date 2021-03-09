@@ -17,6 +17,7 @@ const Input = ({ label, name, isPassword, type, changeType, ...rest }) => (
             aria-expanded={type !== 'password'}
             type="button"
             onClick={changeType}
+            isBackground={false}
             icon={type === 'password' ? <Eye /> : <EyeOff />}
           />
         </Styled.ShowPasswordWrapper>
