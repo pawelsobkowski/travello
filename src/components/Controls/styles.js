@@ -38,6 +38,17 @@ const Input = styled(Field)`
   }
 `;
 
+const InputWrapper = styled.div`
+  position: relative;
+`;
+
+const ShowPasswordWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+`;
+
 const ErrorMessage = styled.div`
   font-size: 1.3rem;
   margin-top: 0.2rem;
@@ -45,6 +56,6 @@ const ErrorMessage = styled.div`
   color: ${({ theme }) => theme.colors.error};
 `;
 
-const Styled = { Input, Label, ErrorMessage };
+const Styled = { Input, Label, ErrorMessage, InputWrapper, ShowPasswordWrapper };
 
 export default Styled;
