@@ -3,6 +3,7 @@ import Styled from './styles';
 import Input from '../components/Controls/input';
 import Button from '../components/FormButton';
 import ErrorMessage from '../components/ErrorMessage';
+import SignInSchema from '../schemas/SignIn';
 
 const SignInForm = () => {
   const initial = { email: '', password: '' };
@@ -10,6 +11,7 @@ const SignInForm = () => {
   return (
     <Formik
       initialValues={initial}
+      validationSchema={SignInSchema}
       onSubmit={(values) => {
         console.log(values);
       }}
